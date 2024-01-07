@@ -7,22 +7,26 @@ html_text = requests.get(url_address).text
 
 soup = BeautifulSoup(html_text, 'lxml')
 
-# jobs = soup.find_all('li', class_='clearfix job-bx wht-shd-bx')
-job = soup.find('li', class_='clearfix job-bx wht-shd-bx')
+jobs = soup.find_all('li', class_='clearfix job-bx wht-shd-bx')
+# job = soup.find('li', class_='clearfix job-bx wht-shd-bx')
 
 # print(jobs)
-company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
+for job in jobs:
+    published_date = job.find('span', class_='sim-posted').text
+    if 'few' in published_date:
 
-skill_rec = job.find('span', class_='srp-skills').text.replace(' ','')
-published_date = job.find('span', class_='sim-posted').text
+        company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
 
-# print(skill_rec)
-# print(company_name.replace(' ', ''))
-# print(job.h3.text.replace(' ', ''))
+        skill_rec = job.find('span', class_='srp-skills').text.replace(' ','')
 
-print(f''''
+        # print(skill_rec)
+        # print(company_name.replace(' ', ''))
+        # print(job.h3.text.replace(' ', ''))
 
-Company Name: {company_name}
-Required Skills: {skill_rec}
-Published Date: {published_date}
-''')
+        print(f'''
+        Company Name: {company_name}
+        Required Skills: {skill_rec}
+        Published Date: {published_date}
+        ''')
+
+        print(" ")
