@@ -11,5 +11,11 @@ with open('home.html', 'r') as html_file:
 
     course_cards = soup.find_all('div', class_='card')
     for course in course_cards:
-     print(course.h5.text)
-     print(course.a.text)
+     course_name = course.h5.text
+     # course_price = course.a.text
+     course_price = course.a.text.split()[-1]
+
+     # print(f"{course_name} price {course_price[-4:]} only")
+     print(f"{course_name} price {course_price} only")
+
+
