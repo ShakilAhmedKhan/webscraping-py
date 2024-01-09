@@ -33,9 +33,9 @@ def find_jobs():
 
                 with open(f'posts/{index}.txt', 'w') as f:
 #alt+shift
-                    f.write(f'Company Name: {company_name.strip()}')
-                    f.write(f'Required Skills: {skill_rec.strip()}')
-                    f.write(f'More info: {more_info}')
+                    f.write(f'Company Name: {company_name.strip()} \n')
+                    f.write(f'Required Skills: {skill_rec.strip()} \n')
+                    f.write(f'More info: {more_info}\n')
                     # print(f'Company Name: {company_name.strip()}')
                     # print(f'Required Skills: {skill_rec.strip()}')
                     # # print(f'Date: {published_date}')
