@@ -2,6 +2,8 @@ from bs4 import BeautifulSoup
 import requests
 url_address = 'https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&searchTextSrc=&searchTextText=&txtKeywords=python&txtLocation='
 
+
+unfamiliar_skill = input('Put skills you do not have >')
 html_text = requests.get(url_address).text
 # print(html_text)
 
@@ -23,10 +25,10 @@ for job in jobs:
         # print(skill_rec)
         # print(company_name.replace(' ', ''))
         # print(job.h3.text.replace(' ', ''))
+        if unfamiliar_skill not in skill_rec:
+            print(f'Company Name: {company_name.strip()}')
+            print(f'Required Skills: {skill_rec.strip()}')
+            # print(f'Date: {published_date}')
+            print(f'More info: {more_info}')
 
-        print(f'Company Name: {company_name.strip()}')
-        print(f'Required Skills: {skill_rec.strip()}')
-        # print(f'Date: {published_date}')
-        print(f'More info: {more_info}')
-
-        print(" ")
+            print(" ")
