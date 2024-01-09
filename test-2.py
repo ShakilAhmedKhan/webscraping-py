@@ -17,7 +17,7 @@ def find_jobs():
     # job = soup.find('li', class_='clearfix job-bx wht-shd-bx')
 
     # print(jobs)
-    for job in jobs:
+    for index, job in enumerate(jobs):
         published_date = job.find('span', class_='sim-posted').text
         if 'few' in published_date:
 
@@ -30,15 +30,21 @@ def find_jobs():
             # print(company_name.replace(' ', ''))
             # print(job.h3.text.replace(' ', ''))
             if unfamiliar_skill not in skill_rec:
-                print(f'Company Name: {company_name.strip()}')
-                print(f'Required Skills: {skill_rec.strip()}')
-                # print(f'Date: {published_date}')
-                print(f'More info: {more_info}')
 
-                print(" ")
+                with open(f'posts/{index}.txt', 'w') as f:
+#alt+shift
+                    f.write(f'Company Name: {company_name.strip()}')
+                    f.write(f'Required Skills: {skill_rec.strip()}')
+                    f.write(f'More info: {more_info}')
+                    # print(f'Company Name: {company_name.strip()}')
+                    # print(f'Required Skills: {skill_rec.strip()}')
+                    # # print(f'Date: {published_date}')
+                    # print(f'More info: {more_info}')
+                print(f'job number: {index} saved')
 
 if __name__ == '__main__':
     while True:
         find_jobs()
-        time_limit = 300
-        time.sleep(time_limit)
+        time_limit = 10
+        print(f"Waiting :::")
+        time.sleep(time_limit * 60)
