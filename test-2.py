@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 url_address = 'https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&searchTextSrc=&searchTextText=&txtKeywords=python&txtLocation='
 
-
+#TODO: modify to input multiple values and match
 unfamiliar_skill = input('Put skills you do not have >')
 html_text = requests.get(url_address).text
 # print(html_text)
